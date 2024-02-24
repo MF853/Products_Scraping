@@ -4,6 +4,8 @@ from werkzeug.utils import secure_filename
 import subprocess
 import psutil
 from threading import Thread
+export FLASK_APP=application.py
+
 
 application = Flask(__name__)
 
