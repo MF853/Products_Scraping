@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <style>
+        body {
+            background-color: #f0f8ff; /* Light blue */
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .upload-form {
+            margin-bottom: 20px;
+        }
+        .upload-form input[type="file"] {
+            padding: 10px;
+            border: none;
+            background-color: #d3e8ff; /* Light blue */
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .upload-form input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .message {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .download-link {
+            font-size: 16px;
+            text-decoration: none;
+            color: #0000EE; /* Blue */
+        }
+        .stop-script {
+            font-size: 16px;
+            text-decoration: none;
+            color: #FF0000; /* Red */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>File Upload</h1>
+        <div class="upload-form">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".xlsx">
+                <input type="submit" value="Upload File">
+            </form>
+        </div>
+        {% if message %}
+        <p class="message">{{ message }}</p>
+        {% endif %}
+        {% if modified_file %}
+        <p><a href="/download-modified-excel/{{ modified_file }}" class="download-link" download>Download Modified Excel</a></p>
+        {% endif %}
+        <p><a href="/stop-script" class="stop-script">Stop Script</a></p>
+    </div>
+</body>
+</html>
